@@ -30,6 +30,18 @@ export default function App() {
     }))
   };
 
+  // check if all dice are held
+  const allHeld = dice.every(die => die.isHeld);
+
+  // check if all dice have the same value
+  const firstValue = dice[0].value;
+  const allSameValue = dice.every(die => die.value === firstValue);
+
+  // if both conditions are tue, log "game won"
+  if (allHeld && allSameValue) {
+    console.log("Game won!")
+  };
+
   const diceElements = dice.map(dieObj => (
     <Die
       key={dieObj.id}
@@ -41,6 +53,8 @@ export default function App() {
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="dice-container">
         {diceElements}
       </div>
