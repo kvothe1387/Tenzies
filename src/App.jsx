@@ -30,17 +30,13 @@ export default function App() {
     }))
   };
 
-  // check if all dice are held
-  const allHeld = dice.every(die => die.isHeld);
+  const gameWon =
+    dice.every(die => die.isHeld) &&
+    dice.every(die => die.value === dice[0].value);
 
-  // check if all dice have the same value
-  const firstValue = dice[0].value;
-  const allSameValue = dice.every(die => die.value === firstValue);
-
-  // if both conditions are tue, log "game won"
-  if (allHeld && allSameValue) {
+  if (gameWon) {
     console.log("Game won!")
-  };
+  }
 
   const diceElements = dice.map(dieObj => (
     <Die
@@ -58,7 +54,10 @@ export default function App() {
       <div className="dice-container">
         {diceElements}
       </div>
-      <button className="roll-dice" onClick={rollDice}>Roll</button>
+      <button className="roll-dice" onClick={rollDice}
+      >
+        {gameWon ? "New Game" : "Roll"}
+      </button>
     </main>
   );
 
