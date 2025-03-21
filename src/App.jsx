@@ -9,7 +9,7 @@ export default function App() {
       .fill(0)
       .map(() => ({
         value: Math.ceil(Math.random() * 6),
-        isHeld: true,
+        isHeld: false,
         id: nanoid()
       }))
   };
@@ -18,15 +18,20 @@ export default function App() {
 
   function rollDice() {
     setDice(generateAllNewDice())
-  }
+  };
 
-  const diceElements = dice.map((die, index) => (
+  function hold(id) {
+    console.log(id)
+  };
+
+  const diceElements = dice.map(dieObj => (
     <Die
-      key={index}
-      value={die.value}
-      isHeld={die.isHeld}
+      key={dieObj.id}
+      value={dieObj.value}
+      isHeld={dieObj.isHeld}
+      hold={() => hold(dieObj.id)}
     />
-  ))
+  ));
 
   return (
     <main>
@@ -35,6 +40,6 @@ export default function App() {
       </div>
       <button className="roll-dice" onClick={rollDice}>Roll</button>
     </main>
-  )
+  );
 
 }

@@ -8,8 +8,9 @@ export default function Die(props) {
 
   return (
     <button
-      className="die"
+
       style={styles}
+      onClick={props.hold}
     >
       {props.value}
     </button>
