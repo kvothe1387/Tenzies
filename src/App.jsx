@@ -12,6 +12,10 @@ export default function App() {
 
   const [dice, setDice] = React.useState(generateAllNewDice());
 
+  function rollDice() {
+    setDice(generateAllNewDice())
+  }
+
   const diceElements = dice.map((value, index) => (
     <Die key={index} value={value} />
   ));
@@ -21,6 +25,7 @@ export default function App() {
       <div className="dice-container">
         {diceElements}
       </div>
+      <button className="roll-dice" onClick={rollDice}>Roll</button>
     </main>
   )
 
