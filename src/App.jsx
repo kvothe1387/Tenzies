@@ -9,7 +9,7 @@ export default function App() {
       .fill(0)
       .map(() => ({
         value: Math.ceil(Math.random() * 6),
-        isHeld: false,
+        isHeld: true,
         id: nanoid()
       }))
   };
@@ -20,7 +20,13 @@ export default function App() {
     setDice(generateAllNewDice())
   }
 
-  const diceElements = dice.map(dieObj => <Die key={dieObj.id} value={dieObj.value} />)
+  const diceElements = dice.map((die, index) => (
+    <Die
+      key={index}
+      value={die.value}
+      isHeld={die.isHeld}
+    />
+  ))
 
   return (
     <main>
