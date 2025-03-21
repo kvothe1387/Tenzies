@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://kvothe1387.github.io/Tenzies/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
