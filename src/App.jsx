@@ -51,7 +51,7 @@ export default function App() {
         { ...die, isHeld: !die.isHeld } :
         die
     ))
-  }
+  };
 
   return (
     <main>
@@ -66,4 +66,4 @@ export default function App() {
       </button>
     </main>
   )
-}
+};
