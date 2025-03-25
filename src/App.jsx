@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Die from "./Die"
 import { nanoid } from "nanoid"
 import Confetti from "react-confetti"
@@ -6,10 +6,17 @@ import "./index.css"
 
 export default function App() {
   const [dice, setDice] = useState(() => generateAllNewDice());
+  const buttonRef = useRef(null);
 
   // create the gameWon variable
   const gameWon = dice.every(die => die.isHeld) &&
     dice.every(die => die.value === dice[0].value);
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
 
   const diceElements = dice.map(dieObj => (
     <Die
